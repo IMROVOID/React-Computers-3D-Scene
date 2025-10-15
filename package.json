@@ -2,6 +2,7 @@
   "name": "monitors",
   "version": "1.0.0",
   "description": "",
+  "homepage": "https://IMROVOID.github.io/React-Computers-3D-Scene",
   "keywords": [
     "bloom"
   ],
@@ -25,12 +26,15 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "gh-pages": "^6.1.1",
     "vite": "^5.0.11"
   },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "browserslist": [
     ">0.2%",

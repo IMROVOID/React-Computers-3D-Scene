@@ -3,6 +3,6 @@ import { defineConfig } from "vite";
   
   // https://vitejs.dev/config/
   export default defineConfig({
+      base: "/React-Computers-3D-Scene/",
       plugins: [react()],
   });
-  
