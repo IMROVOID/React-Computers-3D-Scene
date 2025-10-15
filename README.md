@@ -113,6 +113,8 @@ This command automatically builds the project into a `dist` folder and pushes th
 
 Your site will be live at `https://<your-username>.github.io/<your-repo-name>/` within a few minutes.
 
+---
+
 ## 📜 License & Copyright
 
 This project is completely open source and available to the public. You are free to use, modify, distribute, and fork this software for any purpose. No attribution is required, but it is appreciated.
