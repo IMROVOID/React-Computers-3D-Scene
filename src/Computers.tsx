@@ -5,6 +5,9 @@ import { useGLTF, Merged, RenderTexture, PerspectiveCamera, Text } from '@react-
 import { SpinningBox } from './SpinningBox'
 import { GLTF } from 'three-stdlib'
 
+const modelPath = `${import.meta.env.BASE_URL}computers_1-transformed.glb`
+const fontPath = `${import.meta.env.BASE_URL}Inter-Medium.woff`
+
 type GLTFResult = GLTF & {
   nodes: { [key: string]: THREE.Mesh }
   materials: { [key: string]: THREE.Material }
@@ -12,7 +15,7 @@ type GLTFResult = GLTF & {
 
 const context = createContext<any>(null)
 export function Instances({ children, ...props }: { children: React.ReactNode } & ThreeElements['group']) {
-  const { nodes } = useGLTF('/computers_1-transformed.glb') as GLTFResult
+  const { nodes } = useGLTF(modelPath) as GLTFResult
   const instances = useMemo(
     () => ({
       Object: nodes.Object_4,
@@ -55,7 +58,7 @@ type ComputersProps = ThreeElements['group'] & {
 }
 
 export function Computers(props: ComputersProps) {
-  const { nodes: n, materials: m } = useGLTF('/computers_1-transformed.glb') as GLTFResult
+  const { nodes: n, materials: m } = useGLTF(modelPath) as GLTFResult
   const instances = useContext(context)
   return (
     <group {...props} dispose={null}>
@@ -195,7 +198,7 @@ type ScreenProps = ThreeElements['group'] & {
 
 /* Renders a custom scene into a texture and projects it onto a monitor screen */
 function Screen({ frame, panel, children, ...props }: ScreenProps) {
-  const { nodes, materials } = useGLTF('/computers_1-transformed.glb') as GLTFResult
+  const { nodes, materials } = useGLTF(modelPath) as GLTFResult
   return (
     <group {...props}>
       <mesh castShadow receiveShadow geometry={nodes[frame].geometry} material={materials.Texture} />
@@ -232,7 +235,7 @@ function ScreenText({ invert, x = 0, y = 1.2, text, color, glow, frame, panel, .
       <color attach="background" args={[invert ? 'black' : color]} />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 5]} intensity={glow} />
-      <Text font="/Inter-Medium.woff" position={[x, y, 0]} ref={textRef} fontSize={4} letterSpacing={-0.1} color={!invert ? 'black' : color}>
+      <Text font={fontPath} position={[x, y, 0]} ref={textRef} fontSize={4} letterSpacing={-0.1} color={!invert ? 'black' : color}>
         {text}
       </Text>
     </Screen>
@@ -280,7 +283,7 @@ function ScreenInteractive({ color, glow, frame, panel, shapeColor, shapeType, s
 function Leds() {
   const instances = useContext(context)
   const ref = useRef<THREE.Group>(null!)
-  const { nodes } = useGLTF('/computers_1-transformed.glb') as GLTFResult
+  const { nodes } = useGLTF(modelPath) as GLTFResult
   useMemo(() => {
     nodes.Sphere.material = new THREE.MeshBasicMaterial()
     ;(nodes.Sphere.material as THREE.MeshBasicMaterial).toneMapped = false
