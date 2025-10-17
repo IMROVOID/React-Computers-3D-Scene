@@ -4,6 +4,8 @@ An interactive and customizable 3D scene featuring a collection of vintage compu
 
 **Live Demo:** [**https://imrovoid.github.io/React-Computers-3D-Scene/**](https://imrovoid.github.io/React-Computers-3D-Scene/)
 
+![React 3D Computers Scene Screenshot](https://raw.githubusercontent.com/IMROVOID/React-Computers-3D-Scene/main/public/screenshot.png)
+
 ---
 
 ## ✨ Features
